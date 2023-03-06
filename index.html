@@ -104,10 +104,14 @@
               <td>192.168.0.13</td>
               <td>103.93.54.133</td>
               <td class="more-options-field">
-                <button class="more-options">
+                <button
+                  data-toggle="more-options-field"
+                  data-target="#dropdown"
+                  class="more-options"
+                >
                   <img src="./src/assets/action.svg" alt="More Options" />
                 </button>
-                <div class="options-menu">
+                <div id="dropdown" class="options-menu">
                   <button class="detach-btn">
                     <img src="./src/assets/detach-icon.svg" alt="Detach" />
                     Detach Network
@@ -128,10 +132,14 @@
               <td>10.10.0.14</td>
               <td></td>
               <td class="more-options-field">
-                <button class="more-options">
+                <button
+                  data-toggle="more-options-field"
+                  data-target="#dropdown-2"
+                  class="more-options"
+                >
                   <img src="./src/assets/action.svg" alt="More Options" />
                 </button>
-                <div class="options-menu">
+                <div id="dropdown-2" class="options-menu">
                   <button>
                     <img src="./src/assets/detach-icon.svg" alt="Detach" />
                     Detach Network
@@ -184,15 +192,24 @@
 
     <script>
       // Dropdown
-      const optionsMenu = document.querySelector(".more-options-field");
-
-      const moreOptionBtn = document.querySelector(".more-options");
-
-      const option = document.querySelector(".options-menu");
-
-      moreOptionBtn.addEventListener("click", () =>
-        optionsMenu.classList.toggle("active")
+      var onDropdown = document.querySelectorAll(
+        "[data-toggle=more-options-field]"
       );
+
+      onDropdown.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          const dropdownMenu = e.currentTarget.nextElementSibling;
+
+          if (dropdownMenu.classList.contains("active")) {
+            dropdownMenu.classList.toggle("active");
+          } else {
+            document
+              .querySelectorAll(".options-menu")
+              .forEach((item) => item.classList.remove("active"));
+            dropdownMenu.classList.add("active");
+          }
+        });
+      });
 
       // Modal
       const openDetach = document.querySelector(".detach-btn");
