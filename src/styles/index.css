@@ -1,21 +1,38 @@
 /* CSS For Desktop */
+@font-face {
+  font-family: "proxima-nova";
+  src: url("../font/ProximaNova-Regular.woff") format("woff"),
+    url("../font/ProximaNova-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --primary-black: #222222;
+  --secondary-black: #4a4a4a;
+  --additional-black: #5d5d5d;
   --primary-gray: #6c6c6c;
   --secondary-gray: #939eab;
+  --additional-gray: #f3f5fa;
   --primary-red: #dd1f1f;
   --primary-green: #01a19a;
+  --secondary-green: #008a84;
+  --primary-line: #e6eaee;
+  --disabled-font: #8b8b8b;
+  --primary-blue: #354052;
+  --secondary-blue: #3081f8;
+  --addtional-blue: #293955;
 }
 
 html {
   margin: 0;
   padding: 0;
-  font-family: "proxima nova";
+  font-family: "proxima-nova";
 }
 
 body {
-  padding: 40px 42px;
+  padding: 45px 42px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -54,7 +71,7 @@ header {
 .device-desc {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 15px;
 }
 
 .device-state p,
@@ -64,7 +81,7 @@ header {
 
 .title {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--primary-black);
 }
 
@@ -86,7 +103,9 @@ header {
   border-radius: 4px;
   text-transform: uppercase;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
+  line-height: 13.4px;
+  letter-spacing: 1px;
   color: var(--primary-red);
   background-color: white;
   cursor: pointer;
@@ -94,14 +113,14 @@ header {
 
 .power-sect {
   width: 100%;
-  padding: 20px 0;
+  padding: 15px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   color: var(--primary-gray);
-  border-top: 1px solid whitesmoke;
-  border-bottom: 1px solid whitesmoke;
+  border-top: 1px solid var(--primary-line);
+  border-bottom: 1px solid var(--primary-line);
 }
 
 .power-state {
@@ -109,10 +128,16 @@ header {
   align-items: center;
   gap: 20px;
   font-size: 14px;
+  color: var(--secondary-black);
+}
+
+.power-state p {
+  margin: 0;
+  line-height: 25px;
 }
 
 .power-state .stats {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--primary-green);
 }
 
@@ -126,6 +151,7 @@ header {
   height: 24px;
   background-color: white;
   font-size: 11px;
+  line-height: 13.4px;
   color: var(--primary-gray);
   border: 1px solid var(--primary-green);
   border-radius: 4px;
@@ -134,26 +160,29 @@ header {
   justify-content: center;
   align-items: center;
   gap: 5px;
+  color: var(--additional-black);
 }
 
 .action-btn .disabled {
-  background-color: whitesmoke;
+  background-color: var(--additional-gray);
   border-color: transparent;
   cursor: default;
+  color: var(--disabled-font);
 }
 
 /* Main Contents */
 /* Menu Styles */
 .menu {
   width: 100%;
-  border: 1px solid whitesmoke;
+  border: 1px solid var(--primary-line);
   border-radius: 4px;
-  padding: 18px 0;
+  padding: 15px 0 50px 0;
+  background-color: white;
 }
 
 .tab-menu {
   padding: 0 40px;
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: 1px solid var(--primary-line);
   display: flex;
   gap: 25px;
 }
@@ -163,9 +192,10 @@ header {
   border: none;
   background-color: transparent;
   width: fit-content;
-  padding: 18px 0;
+  padding: 15px 0;
   cursor: pointer;
   font-size: 16px;
+  line-height: 19.49px;
   color: #6c6c6c;
   border-bottom: 2px solid transparent;
 }
@@ -177,7 +207,7 @@ header {
 } */
 
 .tab-menu .active {
-  color: #222222;
+  color: var(--primary-blue);
   font-weight: 600;
   border-bottom: 2px solid var(--primary-green);
 }
@@ -192,13 +222,17 @@ header {
 .subtitle {
   margin: 0;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
+  line-height: 25px;
+  color: var(--secondary-black);
 }
 
 .detail-title {
   margin: 0;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--secondary-black);
 }
 
 .attach-detail,
@@ -218,10 +252,12 @@ header {
 
 .attach-detail form .select-options {
   width: 100%;
-  padding: 12px 20px;
+  padding: 10px 20px;
   border-radius: 4px;
-  border-color: whitesmoke;
+  border-color: var(--primary-line);
   font-size: 14px;
+  line-height: 22.5px;
+  color: var(--secondary-black);
 }
 
 .attach-detail form button {
@@ -230,9 +266,11 @@ header {
   padding: 12px 50px;
   font-size: 11px;
   font-weight: 600;
+  line-height: 13.4px;
+  letter-spacing: 1px;
   color: white;
   background-color: var(--primary-green);
-  background-image: linear-gradient(#01a19a, #00726c);
+  background-image: linear-gradient(#01a19a, #008a84);
   border: none;
   border-radius: 4px;
   text-transform: uppercase;
@@ -245,28 +283,30 @@ header {
   border-collapse: collapse;
 }
 
-#instance-table thead th,
-#instance-table tbody td {
-  padding: 24px 20px;
-  border-bottom: 1px solid whitesmoke;
-}
-
 #instance-table thead th {
   font-size: 14px;
   font-weight: 400;
+  line-height: 27px;
   color: var(--secondary-gray);
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--primary-line);
 }
 
 #instance-table tbody td {
   font-size: 14px;
   font-weight: 400;
-  color: #293955;
+  line-height: 23px;
+  letter-spacing: 0.54px;
+  color: var(--addtional-blue);
+  padding: 24px 20px;
+  border-bottom: 1px solid var(--primary-line);
 }
 
 #instance-table tbody #network-title {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  color: #3081f8;
+  letter-spacing: 0.54px;
+  color: var(--secondary-blue);
 }
 
 .more-options-field {
@@ -286,6 +326,7 @@ header {
 
 .options-menu button {
   border: none;
+  width: 130px;
   padding: 10px 0;
   background-color: transparent;
   cursor: pointer;
@@ -293,6 +334,7 @@ header {
   align-items: center;
   gap: 10px;
   font-size: 13px;
+  line-height: 22.5px;
   color: var(--primary-black);
 }
 
@@ -300,13 +342,12 @@ header {
   position: absolute;
   z-index: 99;
   right: 0;
-  top: 60px;
-  width: 140px;
+  top: 66px;
+  width: fit-content;
   height: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding: 18px;
+  padding: 10px 20px;
   background-color: white;
   background: white;
   border: 1px solid whitesmoke;
@@ -318,33 +359,20 @@ header {
   content: "";
   position: absolute;
   z-index: 999;
-  top: 41px;
-  right: 38px;
+  top: 60px;
+  right: 44px;
   transform: translateX(-25%);
-  height: 20px;
-  width: 20px;
+  height: 15px;
+  width: 15px;
   background-color: white;
-  clip-path: polygon(50% 40%, 100% 100%, 0 100%);
-  box-shadow: 0 1px 4px #6c6c6c;
-}
-
-.more-options-field.active::after {
-  content: "";
-  position: absolute;
-  z-index: 9;
-  top: 32px;
-  right: 24px;
-  transform: translateX(-25%);
-  height: 40px;
-  width: 40px;
-  background-color: whitesmoke;
-  clip-path: polygon(50% 40%, 100% 100%, 0 100%);
+  transform: rotateZ(45deg);
+  box-shadow: -2px -2px 1px #eeeeee;
 }
 
 #line {
   width: 100%;
   height: 1px;
-  background-color: whitesmoke;
+  background-color: var(--primary-line);
 }
 
 .overlay {
@@ -369,15 +397,17 @@ header {
   margin: auto auto;
   z-index: 9999999;
   height: fit-content;
-  width: 500px;
+  max-width: 500px;
+  height: 320px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 4px 5px gray;
-  padding: 40px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+  padding: 30px 40px 50px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 42px;
+  /* gap: 42px; */
+  justify-content: space-between;
 }
 
 .close-btn {
@@ -408,14 +438,18 @@ header {
 .modal-title {
   font-size: 18px;
   font-weight: 600;
-  color: var(--primary-black);
-  margin-bottom: 36px;
+  line-height: 22px;
+  letter-spacing: 0.3px;
+  color: var(--secondary-black);
+  margin-bottom: 30px;
 }
 
 .modal-desc {
+  max-width: 420;
   font-size: 14px;
-  font-weight: normal;
-  color: var(--primary-black);
+  line-height: 22px;
+  font-weight: 400;
+  color: var(--secondary-black);
 }
 
 .modal-actions {
@@ -434,15 +468,17 @@ header {
   text-transform: uppercase;
   font-size: 11px;
   font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 13.4px;
   cursor: pointer;
 }
 
 .cancel-btn {
-  color: var(--secondary-gray);
+  color: #939eab;
   background-image: linear-gradient(#f0f4f9, #d3dde8);
 }
 
 .accept-btn {
   color: white;
-  background-image: linear-gradient(#01a19a, #00726c);
+  background-image: linear-gradient(#01a19a, #008a84);
 }

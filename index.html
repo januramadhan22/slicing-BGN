@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./src/styles/index.css" />
     <link rel="stylesheet" href="./src/styles/mediumView.css" />
     <link rel="stylesheet" href="./src/styles/smallView.css" />
+    <link rel="stylesheet" href="./src/styles/font.css" />
 
     <title>Slicing BGN</title>
   </head>
@@ -110,7 +111,7 @@
                 <div class="options-menu">
                   <button class="detach-btn">
                     <img src="./src/assets/detach-icon.svg" alt="Detach" />
-                    Detach
+                    Detach Network
                   </button>
                   <span id="line"></span>
                   <button>
@@ -134,7 +135,7 @@
                 <div class="options-menu">
                   <button>
                     <img src="./src/assets/detach-icon.svg" alt="Detach" />
-                    Detach
+                    Detach Network
                   </button>
                   <span id="line"></span>
                   <button>
@@ -185,7 +186,9 @@
     <script>
       // Dropdown
       const optionsMenu = document.querySelector(".more-options-field");
+
       const moreOptionBtn = document.querySelector(".more-options");
+
       const option = document.querySelector(".options-menu");
 
       moreOptionBtn.addEventListener("click", () =>
