@@ -31,6 +31,10 @@ html {
   font-family: "proxima-nova";
 }
 
+button {
+  font-family: "proxima-nova";
+}
+
 body {
   padding: 45px 42px;
   position: relative;
