@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/mediumView.css" />
+    <link rel="stylesheet" href="./styles/smallView.css" />
+
+    <title>Slicing BGN</title>
+  </head>
+  <body>
+    <header>
+      <div class="device-sect">
+        <div class="device-desc">
+          <h1 class="title">Nama Instance</h1>
+          <div class="device-state">
+            <p>SS2.1</p>
+            <span></span>
+            <p>2 GB RAM</p>
+            <span></span>
+            <p>1 vCPU</p>
+            <span></span>
+            <p>60 GB Disk</p>
+            <span></span>
+            <p>Ubuntu 18.04 LTS</p>
+          </div>
+        </div>
+        <div class="device-act">
+          <button class="delete-btn">Delete</button>
+        </div>
+      </div>
+      <div class="power-sect">
+        <div class="power-state">
+          <p>Power State :</p>
+          <p class="stats">Running</p>
+        </div>
+        <div class="action-btn">
+          <button id="start" class="disabled" disabled>
+            <img src="../public/assets/icon-start.svg" alt="Start" />Start
+          </button>
+          <button id="pause">
+            <img src="../public/assets/icon-pause.svg" alt="Pause" />Pause
+          </button>
+          <button id="restart">
+            <img src="../public/assets/icon-restart.svg" alt="Restart" />Restart
+          </button>
+          <button id="power">
+            <img src="../public/assets/icon-turnoff.svg" alt="Power Off" />Power
+            Off
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="menu">
+      <div class="tab-menu">
+        <button id="overview-btn">Overview</button>
+        <button id="access-btn">Access</button>
+        <button id="network-btn" class="active">Networks</button>
+        <button id="security-btn">Security Groups</button>
+        <button id="volume-btn">Volumes</button>
+        <button id="snapshot-btn">Snapshots</button>
+        <button id="operation-btn">Operations</button>
+      </div>
+      <div class="detail-menu">
+        <h2 class="subtitle">Networks</h2>
+
+        <!-- Attach Detail -->
+        <div class="attach-detail">
+          <label for="select-options" class="detail-title"
+            >Attach Network</label
+          >
+          <form>
+            <select
+              name="select-options"
+              id="select-options"
+              class="select-options"
+            >
+              <option value="network1">Network 1</option>
+              <option value="network2">Network 2</option>
+            </select>
+            <button>Attach</button>
+          </form>
+        </div>
+
+        <!-- Instance Detail -->
+        <div class="instance-detail">
+          <p class="detail-title">Instance Networks</p>
+          <table id="instance-table">
+            <thead>
+              <th>Network Name</th>
+              <th>Subnet</th>
+              <th>External Connection</th>
+              <th>Private IP</th>
+              <th>Public IP</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <td id="network-title">public_network</td>
+              <td>192.168.0.0/20</td>
+              <td>Public</td>
+              <td>192.168.0.13</td>
+              <td>103.93.54.133</td>
+              <td class="more-options-field">
+                <button class="more-options">
+                  <img src="../public/assets/action.svg" alt="More Options" />
+                </button>
+                <div class="options-menu">
+                  <button class="detach-btn">
+                    <img src="../public/assets/detach-icon.svg" alt="Detach" />
+                    Detach
+                  </button>
+                  <span id="line"></span>
+                  <button>
+                    <img src="../public/assets/remove-icon.svg" alt="Remove" />
+                    Remove Public
+                  </button>
+                </div>
+              </td>
+            </tbody>
+
+            <tbody>
+              <td id="network-title">network1</td>
+              <td>10.10.0.0/20</td>
+              <td>Public</td>
+              <td>10.10.0.14</td>
+              <td></td>
+              <td class="more-options-field">
+                <button class="more-options">
+                  <img src="../public/assets/action.svg" alt="More Options" />
+                </button>
+                <div class="options-menu">
+                  <button>
+                    <img src="../public/assets/detach-icon.svg" alt="Detach" />
+                    Detach
+                  </button>
+                  <span id="line"></span>
+                  <button>
+                    <img src="../public/assets/remove-icon.svg" alt="Remove" />
+                    Remove Public
+                  </button>
+                </div>
+              </td>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Popup -->
+    <div class="overlay" id="overlay">
+      <div class="modal">
+        <div class="modal-content">
+          <div class="close-btn">
+            <button class="close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <h2 class="modal-title">Detach Network</h2>
+          <p class="modal-desc">
+            Detaching network interface with Public IP will detach network
+            interface and permanently remove the associated Public IP. You will
+            get no refund for your previous payment of Public IP.
+          </p>
+        </div>
+        <div class="modal-actions">
+          <button class="cancel-btn">Cancel</button>
+          <button class="accept-btn">Detach</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Dropdown
+      const optionsMenu = document.querySelector(".more-options-field");
+      const moreOptionBtn = document.querySelector(".more-options");
+      const option = document.querySelector(".options-menu");
+
+      moreOptionBtn.addEventListener("click", () =>
+        optionsMenu.classList.toggle("active")
+      );
+
+      // Modal
+      const openDetach = document.querySelector(".detach-btn");
+      const modal = document.querySelector("#overlay");
+      const closeModal = document.querySelector(".close");
+
+      openDetach.addEventListener("click", () => {
+        modal.classList.add("active");
+        optionsMenu.classList.remove("active");
+      });
+
+      closeModal.addEventListener("click", () =>
+        modal.classList.remove("active")
+      );
+    </script>
+  </body>
+</html>
